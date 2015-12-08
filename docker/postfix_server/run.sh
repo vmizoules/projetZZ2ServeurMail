@@ -13,5 +13,3 @@ sleep 1
 echo -e
 echo '$vincent: cat /var/mail/vincent'
 sudo -u vincent cat /var/mail/vincent
-
-#tail -f /var/log/mail.log
