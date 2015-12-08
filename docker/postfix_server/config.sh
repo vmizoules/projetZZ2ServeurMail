@@ -2,8 +2,10 @@
 
 echo "Configuring Postfix..."
 
-#user alex
-useradd alex
+echo "localhost" > /etc/mailname
 
+echo "Add users..."
+useradd alexandre -g mail
+useradd vincent -g mail
 
 exit 0
