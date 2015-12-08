@@ -41,3 +41,7 @@ inet_protocols = all
 # forward
 virtual_alias_domains = localhost.localdomain, localhost
 virtual_alias_maps = hash:/etc/postfix/virtual
+
+# change domain name
+smtp_generic_maps = hash:/etc/postfix/generic
+sender_canonical_maps = hash:/etc/postfix/generic

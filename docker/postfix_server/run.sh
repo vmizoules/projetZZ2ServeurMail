@@ -20,6 +20,7 @@ newaliases
 
 echo "Read forward file..."
 postmap /etc/postfix/virtual
+postmap /etc/postfix/generic
 
 # Launch services
 

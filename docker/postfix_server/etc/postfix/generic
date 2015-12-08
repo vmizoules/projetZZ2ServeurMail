@@ -1,4 +1,3 @@
-@localhost.localdomain     @domaine.be
-@549fd245d294     @mydomain.fr
+# lets change domain name
 
-INUTILE car pas utilisé pour le moment
+@localhost.localdomain     @projetzz2.fr
