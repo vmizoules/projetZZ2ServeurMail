@@ -1,7 +1,11 @@
+# dc rm -f && dc build && dc up
+
 postfix:
     build: postfix_server
+    hostname: localhost
+    domainname: localdomain
     volumes:
-        - ./postfix_server/etc/aliases:/etc/aliases
+        - ./postfix_server/etc/postfix/aliases:/etc/postfix/aliases
         - ./postfix_server/etc/postfix/main.cf:/etc/postfix/main.cf
         - ./postfix_server/etc/postfix/generic:/etc/postfix/generic
-#        - ./postfix_server/run.sh:/opt/run.sh
+        - ./postfix_server/etc/postfix/virtual:/etc/postfix/virtual
