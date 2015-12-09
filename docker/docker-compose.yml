@@ -10,18 +10,21 @@ postfix:
         - ./postfix_server/etc/postfix/master.cf:/etc/postfix/master.cf
         - ./postfix_server/etc/postfix/generic:/etc/postfix/generic
         - ./postfix_server/etc/postfix/virtual:/etc/postfix/virtual
+        - ./postfix_server/etc/postfix/mysql_virtual_alias_maps.cf:/etc/postfix/mysql_virtual_alias_maps.cf
+        - ./postfix_server/etc/postfix/mysql_virtual_domains_maps.cf:/etc/postfix/mysql_virtual_domains_maps.cf
+        - ./postfix_server/etc/postfix/mysql_virtual_mailbox_maps.cf:/etc/postfix/mysql_virtual_mailbox_maps.cf
     links:
     - database:database
 
-phpmyadmin:
-   image: corbinu/docker-phpmyadmin
-   ports :
-    - "8080:80"
-   environment:
-    - MYSQL_USERNAME=root
-    - MYSQL_PASSWORD=password
-   links:
-    - database:mysql
+#phpmyadmin:
+#   image: corbinu/docker-phpmyadmin
+#   ports :
+#    - "8080:80"
+#   environment:
+#    - MYSQL_USERNAME=root
+#    - MYSQL_PASSWORD=password
+#   links:
+#    - database:mysql
 
 database:
   image: mysql:5.5
