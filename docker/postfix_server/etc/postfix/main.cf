@@ -45,3 +45,23 @@ inet_protocols = all
 # change domain name
 smtp_generic_maps = hash:/etc/postfix/generic
 sender_canonical_maps = hash:/etc/postfix/generic
+
+# Support Mysql
+virtual_alias_maps = mysql:/etc/postfix/mysql_virtual_alias_maps.cf
+virtual_gid_maps = static:5000
+virtual_mailbox_base = /home/vmail
+virtual_mailbox_domains = mysql:/etc/postfix/mysql_virtual_domains_maps.cf
+virtual_mailbox_limit = 51200000
+virtual_mailbox_maps = mysql:/etc/postfix/mysql_virtual_mailbox_maps.cf
+virtual_minimum_uid = 5000
+virtual_transport = virtual
+virtual_uid_maps = static:5000
+# Support du quota
+#virtual_create_maildirsize = yes
+#virtual_mailbox_extended = yes
+#virtual_mailbox_limit_maps = mysql:/etc/postfix/mysql_virtual_mailbox_limit_maps.cf
+#virtual_mailbox_limit_override = yes
+#virtual_maildir_limit_message = Desole, la boite email de l'utilisateur est pleine, essayez plus tard.
+#virtual_overquota_bounce = yes
+# Suport du relay
+#relay_domains = mysql:/etc/postfix/mysql_relay_domains_maps.cf

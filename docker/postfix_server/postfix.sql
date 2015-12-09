@@ -37,3 +37,7 @@ CREATE TABLE `mailbox` (
 `active` tinyint(1) NOT NULL default '1',
 PRIMARY KEY  (username)
 ) ENGINE=MyISAM COMMENT='Postfix Admin - Virtual Mailboxes';
+
+INSERT INTO domain (domain,description) VALUES ('localhost','Test Domain');
+INSERT INTO alias (address,goto) VALUES ('noe@localhost', 'vincent@localhost');
+INSERT INTO mailbox (username,password,name,maildir)  VALUES ('utilisateur@localhost',ENCRYPT('mdp'),'Mailbox User','utilisateur@localhost/');
