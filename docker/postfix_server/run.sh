@@ -7,7 +7,6 @@ echo "Configuring Postfix..."
 chown -R postfix /etc/postfix
 chgrp -R postfix /etc/postfix
 chmod -R ugo+rwx /etc/postfix
-#chmod 740 /etc/postfix/mysql_*
 
 echo "localhost" > /etc/mailname
 
@@ -27,7 +26,9 @@ postmap /etc/postfix/generic
 groupadd -g 5000 vmail
 useradd -g vmail -u 5000 vmail -d /home/vmail -m
 
-sleep 10
+sleep 9
+echo "Creating SQL entries..."
+sleep 1
 mysql -h database_1 -u root -prootpassword < /opt/postfix.sql
 
 # Launch services
