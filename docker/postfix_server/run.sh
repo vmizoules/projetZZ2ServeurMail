@@ -8,8 +8,6 @@ chown -R postfix /etc/postfix
 chgrp -R postfix /etc/postfix
 chmod -R ugo+rwx /etc/postfix
 
-echo "localhost" > /etc/mailname
-
 echo "Add users..."
 useradd alexandre -g mail
 useradd pierre -g mail

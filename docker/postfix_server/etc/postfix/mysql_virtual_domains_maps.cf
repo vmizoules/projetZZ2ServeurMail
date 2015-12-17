@@ -1,7 +1,0 @@
-user = postfix
-password = password
-hosts = database_1
-dbname = postfix
-query = SELECT domain FROM domain WHERE domain='%s'
-#optional query to use when relaying for backup MX
-#query = SELECT domain FROM domain WHERE domain='%s' and backupmx = '0' and active = '1'

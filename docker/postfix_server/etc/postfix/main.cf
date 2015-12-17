@@ -26,11 +26,24 @@ smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 # See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
 # information on enabling SSL in the smtp client.
 
-smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+#On precise les noms de machines et du domaine
 myhostname = MyMailServer
+mydomain = localhost
+
+#on spécifie l'envoie puis la reception du courrier 
+myorigin=$myhostname
+mydestination =  $myhostname,$mydomain, localhost.localdomain
+
+#Mode de transport pour les couriers sortants
+default_transport = smtp 
+
+#Mise en place des alias 
 alias_maps = hash:/etc/postfix/aliases
 alias_database = hash:/etc/postfix/aliases
-mydestination = /etc/mailname, localhost.localdomain, localhost
+
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+
+# PostFix vers l'exterrieur 
 relayhost = 
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 mailbox_size_limit = 0
@@ -38,7 +51,7 @@ recipient_delimiter = +
 inet_interfaces = all
 inet_protocols = all
 
-# forward
+# forward fichier vitual 
 #virtual_alias_domains = localhost.localdomain, localhost
 #virtual_alias_maps = hash:/etc/postfix/virtual
 
@@ -48,20 +61,3 @@ sender_canonical_maps = hash:/etc/postfix/generic
 
 # Support Mysql
 virtual_alias_maps = mysql:/etc/postfix/mysql_virtual_alias_maps.cf
-virtual_gid_maps = static:5000
-virtual_mailbox_base = /home/vmail
-virtual_mailbox_domains = mysql:/etc/postfix/mysql_virtual_domains_maps.cf
-virtual_mailbox_limit = 51200000
-virtual_mailbox_maps = mysql:/etc/postfix/mysql_virtual_mailbox_maps.cf
-virtual_minimum_uid = 5000
-virtual_transport = virtual
-virtual_uid_maps = static:5000
-# Support du quota
-#virtual_create_maildirsize = yes
-#virtual_mailbox_extended = yes
-#virtual_mailbox_limit_maps = mysql:/etc/postfix/mysql_virtual_mailbox_limit_maps.cf
-#virtual_mailbox_limit_override = yes
-#virtual_maildir_limit_message = Desole, la boite email de l'utilisateur est pleine, essayez plus tard.
-#virtual_overquota_bounce = yes
-# Suport du relay
-#relay_domains = mysql:/etc/postfix/mysql_relay_domains_maps.cf
