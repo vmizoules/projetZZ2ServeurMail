@@ -29,12 +29,12 @@ smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 #############################################################################
 
 # set the hostname and domain name
-myhostname = MyMailServer
+myhostname = MyPostfixMailServer
 mydomain = localhost
 
 # set receipt and sends of mails
 myorigin = $myhostname
-mydestination = $myhostname, $mydomain, localhost.localdomain, postfix
+mydestination = $myhostname, $mydomain, localhost.localdomain, mymailserver
 
 # transport mod for outgoing mails
 default_transport = smtp
@@ -54,11 +54,11 @@ inet_protocols = all
 
 # virtual aliases (in file)
 #virtual_alias_maps = hash:/etc/postfix/virtual
-#virtual_alias_domains = localhost.localdomain, localhost, postfix
+#virtual_alias_domains = localhost.localdomain, localhost, mymailserver
 
 # virtual aliases (in mysql)
 virtual_alias_maps = mysql:/etc/postfix/mysql_virtual_alias_maps.cf
-virtual_alias_domains = localhost.localdomain, localhost, postfix
+virtual_alias_domains = localhost.localdomain, localhost, mymailserver
 
 # translate domain name for outgoing mails
 smtp_generic_maps = hash:/etc/postfix/generic

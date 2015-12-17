@@ -3,7 +3,6 @@
 postfix:
     build: postfix_server
     hostname: localhost
-    domainname: localdomain
     ports:
         - "25:25"
         - "80:80"
@@ -33,7 +32,7 @@ client1:
         - ./postfix_client/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
         - ./postfix_client/etc/ssmtp/revaliases:/etc/ssmtp/revaliases
     links:
-        - postfix:postfix
+        - postfix:mymailserver
 
 #phpmyadmin:
 #   image: corbinu/docker-phpmyadmin
