@@ -1,7 +1,6 @@
 # ISIMA ZZ2  - Project
-# Vincent Mizoules - Alexandre Barret
 
-# Commands
+## Commands
 
 Install dependencies
 
@@ -12,3 +11,7 @@ Launch all container
 
 	cd docker
 	dc rm -f && dc build && dc up
+
+## Credits
+
+Vincent Mizoules & Alexandre Barret
