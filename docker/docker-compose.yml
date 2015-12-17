@@ -30,7 +30,6 @@ client1:
     build: postfix_client
     volumes:
         - ./postfix_client/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
-        - ./postfix_client/etc/ssmtp/revaliases:/etc/ssmtp/revaliases
     links:
         - postfix:mymailserver
 

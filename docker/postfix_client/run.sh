@@ -17,22 +17,22 @@ launch () {
 
 echo "[START] Configuring Postfix..."
 echo "   Add users client postfix .."
-useradd clientpostfix -g mail
+useradd clientuser -g mail
 echo "[END] Configuring Postfix..."
 
 # ---- Test ----
 
 sleep 12 # wait for mysql & postfix server started
 
-USER='clientpostfix'
+USER='clientuser'
 COMMAND='echo "client mail -> root "|mail -s "Bjr1" root@mymailserver'
 launch "$USER" "$COMMAND"
 
-USER='clientpostfix'
+USER='clientuser'
 COMMAND='echo "client mail -> Vincent "|mail -s "Bjr2" vincent@mymailserver'
 launch "$USER" "$COMMAND"
 
-USER='clientpostfix'
+USER='clientuser'
 COMMAND='echo "client mail -> noe -> Vincent "|mail -s "Bjr3" noe@mymailserver'
 launch "$USER" "$COMMAND"
 
