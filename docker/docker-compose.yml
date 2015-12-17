@@ -38,6 +38,7 @@ webserver:
         - "80:80"
     volumes:
         - ./apache/php.ini:/etc/php5/apache2/conf.d/30-custom.ini
+        - ./apache/php.ini:/etc/php5/cli/conf.d/30-custom.ini
         - ../website:/var/www/html/
     environment:
         - ALLOW_OVERRIDE=true
