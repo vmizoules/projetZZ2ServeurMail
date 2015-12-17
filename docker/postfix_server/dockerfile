@@ -4,7 +4,7 @@ MAINTAINER Vincent Mizoules, Alexandre Barret
 # Update
 RUN apt-get update
 # Install
-RUN apt-get -y install rsyslog postfix mailutils vim
+RUN apt-get -y install rsyslog postfix mailutils
 RUN apt-get -y install postfix-mysql mysql-client
 
 # Add files

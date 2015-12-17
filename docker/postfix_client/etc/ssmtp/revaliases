@@ -1,0 +1,13 @@
+# sSMTP aliases
+# 
+# Format:	local_account:outgoing_address:mailhub
+#
+# Example: root:your_login@your.domain:mailhub.your.domain[:port]
+# where [:port] is an optional port number that defaults to 25.
+
+
+#envoit de mail avec root 
+root:root@localhost:postfix:25
+
+#envoit de mail avec l'utilisateur clientpostfix  
+clientpostfix:clientpostfix@domainMachineClient:postfix:25

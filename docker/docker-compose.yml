@@ -4,6 +4,9 @@ postfix:
     build: postfix_server
     hostname: localhost
     domainname: localdomain
+    ports:
+        - "25:25"
+        - "80:80"
     volumes:
         - ./postfix_server/etc/postfix/aliases:/etc/postfix/aliases
         - ./postfix_server/etc/postfix/main.cf:/etc/postfix/main.cf
@@ -25,12 +28,19 @@ postfix:
 #    - database:mysql
 
 database:
-  image: mysql:5.5
-  ports:
-   - "3306:3306"  
-  environment:
-     - MYSQL_ROOT_PASSWORD=rootpassword
-     - MYSQL_DATABASE=postfix
-     - MYSQL_USER=postfix
-     - MYSQL_PASSWORD=password
+    image: mysql:5.5
+    ports:
+        - "3306:3306"
+    environment:
+        - MYSQL_ROOT_PASSWORD=rootpassword
+        - MYSQL_DATABASE=postfix
+        - MYSQL_USER=postfix
+        - MYSQL_PASSWORD=password
 
+client1:
+    build: postfix_client
+    volumes:
+        - ./postfix_client/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+        - ./postfix_client/etc/ssmtp/revaliases:/etc/ssmtp/revaliases
+    links:
+        - postfix:postfix

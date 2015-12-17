@@ -10,3 +10,4 @@ PRIMARY KEY  (address)
 ) ENGINE=MyISAM COMMENT='Postfix Admin - Virtual Aliases';
 
 INSERT INTO alias (address,goto) VALUES ('noe@localhost', 'vincent@localhost');
+INSERT INTO alias (address,goto) VALUES ('noe@postfix', 'vincent@localhost');

@@ -32,7 +32,7 @@ mydomain = localhost
 
 #on spécifie l'envoie puis la reception du courrier 
 myorigin=$myhostname
-mydestination =  $myhostname,$mydomain, localhost.localdomain
+mydestination =  $myhostname,$mydomain, localhost.localdomain, postfix
 
 #Mode de transport pour les couriers sortants
 default_transport = smtp 
@@ -52,7 +52,7 @@ inet_interfaces = all
 inet_protocols = all
 
 # forward fichier vitual 
-#virtual_alias_domains = localhost.localdomain, localhost
+#virtual_alias_domains = localhost.localdomain, localhost, postfix
 #virtual_alias_maps = hash:/etc/postfix/virtual
 
 # change domain name

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Configuration
-
 echo "Configuring Postfix..."
 
 chown -R postfix /etc/postfix
@@ -20,7 +19,7 @@ echo "Read forward file..."
 postmap /etc/postfix/virtual
 postmap /etc/postfix/generic
 
-sleep 9
+sleep 9 #waiting for MySQL start
 echo "Creating SQL entries..."
 sleep 1
 mysql -h database_1 -u root -prootpassword < /opt/postfix.sql
@@ -32,12 +31,28 @@ service rsyslog start > /dev/null 2>&1
 service postfix start > /dev/null 2>&1
 sleep 2 ; echo -e
 
-# Test ALIAS mysql
+# ----- Test ------
 
-sudo -u alexandre echo "Bonjour Vincent"|mail -s "Bjr" noe@localhost
-echo '$alexandre: echo "Bonjour Vincent"|mail -s "Bjr" noe@localhost'
-sleep 1
+launch () {
+	# print command
+	echo -n "\$$1: "
+	echo "$2"
 
-echo -e
-echo '$vincent: cat /var/mail/vincent'
-sudo -u vincent cat /var/mail/vincent
+	# exec command
+	sudo -u $1 \
+		-H sh -c \
+		"$2"
+}
+
+# waiting for client mails
+sleep 18
+
+USER='vincent'
+COMMAND='mail -p'
+launch "$USER" "$COMMAND"
+
+USER='root'
+COMMAND='mail -p'
+launch "$USER" "$COMMAND"
+
+#tail -f /var/log/mail.log
