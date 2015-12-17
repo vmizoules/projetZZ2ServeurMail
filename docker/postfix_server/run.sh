@@ -20,10 +20,6 @@ echo "Read forward file..."
 postmap /etc/postfix/virtual
 postmap /etc/postfix/generic
 
-# create vmail
-groupadd -g 5000 vmail
-useradd -g vmail -u 5000 vmail -d /home/vmail -m
-
 sleep 9
 echo "Creating SQL entries..."
 sleep 1
