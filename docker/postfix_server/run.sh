@@ -31,19 +31,36 @@ sleep 2 ; echo -e
 
 # Test
 
+launch () {
+	# print command
+	echo -n "\$$1: "
+	echo "$2"
+
+	# exec command
+	sudo -u $1 \
+		-H sh -c \
+		"$2"
+}
+
 echo "-- Test --"
-sudo -u alexandre echo "Bonjour Vincent"|mail -s "Bjr" pierre@localhost
-echo '$alexandre: echo "Bonjour Vincent"|mail -s "Bjr" pierre@localhost'
+USER='alexandre'
+COMMAND='echo "Bonjour Vincent"|mail -s "Bjr" pierre@localhost'
+launch "$USER" "$COMMAND"
 sleep 1
 
 echo -e
-echo '$alexandre: cat /var/mail/alexandre'
-sudo -u alexandre cat /var/mail/alexandre
+USER='alexandre'
+COMMAND='mail'
+launch "$USER" "$COMMAND"
 
 echo -e
-echo '$pierre: cat /var/mail/pierre'
-sudo -u pierre cat /var/mail/pierre
+USER='pierre'
+COMMAND='mail'
+launch "$USER" "$COMMAND"
 
 echo -e
-echo '$vincent: cat /var/mail/vincent'
-sudo -u vincent cat /var/mail/vincent
+USER='vincent'
+COMMAND='mail -p'
+launch "$USER" "$COMMAND"
+
+#tail -f /var/log/mail.log
