@@ -1,12 +1,9 @@
+#!/bin/bash
 
-echo "Add users client postfix .."
-useradd clientpostfix -g mail
-
-echo "Starting ssmtp..."
-#service ssmtp start > /dev/null 2>&1
-
+# functions
 launch () {
 	# print command
+	echo -e
 	echo -n "\$$1: "
 	echo "$2"
 
@@ -16,8 +13,17 @@ launch () {
 		"$2"
 }
 
-sleep 12
-echo "-- Test Client --"
+# ---- Configuration ----
+
+echo "[START] Configuring Postfix..."
+echo "   Add users client postfix .."
+useradd clientpostfix -g mail
+echo "[END] Configuring Postfix..."
+
+# ---- Test ----
+
+sleep 12 # wait for mysql & postfix server started
+
 USER='clientpostfix'
 COMMAND='echo "client postfix -> root "|mail -s "Bjr1" root@postfix'
 launch "$USER" "$COMMAND"
@@ -29,5 +35,5 @@ launch "$USER" "$COMMAND"
 USER='clientpostfix'
 COMMAND='echo "client postfix -> noe -> Vincent "|mail -s "Bjr3" noe@postfix'
 launch "$USER" "$COMMAND"
-sleep 1
-tail -f /opt/run.sh
+
+#tail -f /opt/run.sh

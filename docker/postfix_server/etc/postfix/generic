@@ -1,3 +1,4 @@
-# lets change domain name
+# Translate domain into another when sending email
+# (localhost -> external domain) 
 
 @localhost.localdomain     @projetzz2.fr

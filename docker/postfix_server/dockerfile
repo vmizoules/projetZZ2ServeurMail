@@ -10,11 +10,7 @@ RUN apt-get -y install postfix-mysql mysql-client
 # Add files
 ADD run.sh /opt/run.sh
 ADD postfix.sql /opt/postfix.sql
-ADD config.sh /opt/config.sh
-
-# End install
-RUN chmod +x /opt/*.sh
-RUN /opt/config.sh
+RUN chmod +x /opt/run.sh
 
 # Run CMD
 CMD /opt/run.sh

@@ -26,21 +26,18 @@ smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 # See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
 # information on enabling SSL in the smtp client.
 
-#On precise les noms de machines et du domaine
+#############################################################################
+
+# set the hostname and domain name
 myhostname = MyMailServer
 mydomain = localhost
 
-#on spécifie l'envoie puis la reception du courrier 
-myorigin=$myhostname
-mydestination =  $myhostname,$mydomain, localhost.localdomain, postfix
+# set receipt and sends of mails
+myorigin = $myhostname
+mydestination = $myhostname, $mydomain, localhost.localdomain, postfix
 
-#Mode de transport pour les couriers sortants
-default_transport = smtp 
-
-#Mise en place des alias 
-alias_maps = hash:/etc/postfix/aliases
-alias_database = hash:/etc/postfix/aliases
-
+# transport mod for outgoing mails
+default_transport = smtp
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
 
 # PostFix vers l'exterrieur 
@@ -51,13 +48,19 @@ recipient_delimiter = +
 inet_interfaces = all
 inet_protocols = all
 
-# forward fichier vitual 
-#virtual_alias_domains = localhost.localdomain, localhost, postfix
-#virtual_alias_maps = hash:/etc/postfix/virtual
+# local aliases
+#alias_maps = hash:/etc/postfix/aliases
+#alias_database = hash:/etc/postfix/aliases
 
-# change domain name
+# virtual aliases (in file)
+#virtual_alias_maps = hash:/etc/postfix/virtual
+#virtual_alias_domains = localhost.localdomain, localhost, postfix
+
+# virtual aliases (in mysql)
+virtual_alias_maps = mysql:/etc/postfix/mysql_virtual_alias_maps.cf
+virtual_alias_domains = localhost.localdomain, localhost, postfix
+
+# translate domain name for outgoing mails
 smtp_generic_maps = hash:/etc/postfix/generic
 sender_canonical_maps = hash:/etc/postfix/generic
 
-# Support Mysql
-virtual_alias_maps = mysql:/etc/postfix/mysql_virtual_alias_maps.cf

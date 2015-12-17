@@ -1,3 +1,5 @@
+# configuration for virtual alias maps - mysql
+
 user = postfix
 password = password
 hosts = database_1
