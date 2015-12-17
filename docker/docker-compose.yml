@@ -33,6 +33,18 @@ client1:
     links:
         - postfix:mymailserver
 
+webserver:
+    build: apache
+    ports:
+        - "80:80"
+    volumes:
+        - ./apache/php.ini:/etc/php5/apache2/conf.d/30-custom.ini
+        - ../website:/var/www/html/
+    environment:
+        - ALLOW_OVERRIDE=true
+    links:
+        - database:database
+
 #phpmyadmin:
 #   image: corbinu/docker-phpmyadmin
 #   ports :
