@@ -45,12 +45,12 @@ webserver:
     links:
         - database:database
 
-#phpmyadmin:
-#   image: corbinu/docker-phpmyadmin
-#   ports :
-#    - "8080:8080"
-#   environment:
-#    - MYSQL_USERNAME=root
-#    - MYSQL_PASSWORD=password
-#   links:
-#    - database:mysql
+phpmyadmin:
+    image: corbinu/docker-phpmyadmin:4.2.7.1
+    ports:
+        - "8080:80"
+    environment:
+        - MYSQL_USERNAME=root
+        - MYSQL_PASSWORD=rootpassword
+    links:
+        - database:mysql
