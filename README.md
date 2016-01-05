@@ -2,11 +2,6 @@
 
 ## Commands
 
-Install dependencies
-
-	cd website
-    docker run -v $(pwd):/app composer/composer install
-
 Launch all container
 
 	cd docker
