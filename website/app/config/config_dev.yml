@@ -43,3 +43,10 @@ monolog:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+parameters:
+    database_host:     database
+    database_port:     3306
+    database_name:     postfix
+    database_user:     root
+    database_password: rootpassword
