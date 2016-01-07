@@ -2,6 +2,8 @@ USE postfix;
 CREATE TABLE `alias` (
 	`address` varchar(255) NOT NULL default '',
 	`user_id` int(11) NOT NULL,
+	`site` varchar(255),
+	`url` varchar(255),
 	`created` datetime NOT NULL default '0000-00-00 00:00:00',
 	`modified` datetime NOT NULL default '0000-00-00 00:00:00',
 	`enabled` tinyint(1) NOT NULL default '1',
