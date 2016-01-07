@@ -4,4 +4,4 @@ user = postfix
 password = password
 hosts = database_1
 dbname = postfix
-query = SELECT goto FROM alias WHERE address='%s' AND enabled = 1
+query = SELECT email FROM alias, fos_user WHERE alias.user_id=fos_user.id AND alias.address='%s' AND alias.enabled = 1 
