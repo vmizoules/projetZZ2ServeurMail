@@ -3,21 +3,50 @@
 namespace AppForwardBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="alias")
+ */
 class Alias
 {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="string")
+     **/
     private $address;
+
+    /**
+     * @ORM\Column(type="integer")
+     **/
     private $user_id;
+
+    /**
+     * @ORM\Column(type="string")
+     **/
     private $site;
+
+    /**
+     * @ORM\Column(type="string")
+     **/
     private $url;
+
     /**
      * @var \DateTime
-     */
+     * @ORM\Column(type="datetime")
+     **/
     private $created;
+
     /**
      * @var \DateTime
-     */
+     * @ORM\Column(type="datetime")
+     **/
     private $modified;
+
+    /**
+     * @ORM\Column(type="boolean")
+     **/
     private $enabled = 1; // activated by default
 
     /**

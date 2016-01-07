@@ -4,6 +4,7 @@ namespace AppForwardBundle\Controller;
 
 use AppForwardBundle\Entity\Alias;
 use AppForwardBundle\Form\AliasType;
+use AppForwardBundle\Repository\Mysql;
 use AppForwardBundle\Manager\MailAddress;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +34,14 @@ class AliasController extends Controller
             $now = new DateTime('now');
             $newAlias->setCreated($now);
             $newAlias->setModified($now);
-            
+
+            /*$database = new Mysql($this->getDoctrine());
+            $database->createAlias($newAlias);*/
+
+            $entityManager = $this->getDoctrine()->getEntityManager();
+            $entityManager->persist($newAlias);
+            $entityManager->flush();
+
             exit("TODO: save it !");
 
             //return $this->redirectToRoute('replace_with_some_route');

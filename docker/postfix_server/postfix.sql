@@ -1,4 +1,5 @@
 USE postfix;
+/*
 CREATE TABLE `alias` (
 	`address` varchar(255) NOT NULL default '',
 	`user_id` int(11) NOT NULL,
@@ -10,6 +11,7 @@ CREATE TABLE `alias` (
 	PRIMARY KEY (`address`),
 	FOREIGN KEY (`user_id`) REFERENCES fos_user(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=MyISAM COMMENT='Postfix Admin - Virtual Aliases';
+*/
 
 /* Create user noe */
 INSERT INTO `fos_user` (
