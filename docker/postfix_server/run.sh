@@ -38,7 +38,7 @@ echo "[END] Configuring Postfix..."
 # Insert Mysql entries
 
 echo "[START] Waiting for MySQL start"
-sleep 10
+sleep 12
 echo "[END] Waiting for MySQL start"
 mysql -h database_1 -u root -prootpassword < /opt/postfix.sql
 

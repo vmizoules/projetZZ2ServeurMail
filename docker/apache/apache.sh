@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # wait database 
-sleep 20
+sleep 10
 # configure symfony
 cd /var/www/html
 php composer.phar install

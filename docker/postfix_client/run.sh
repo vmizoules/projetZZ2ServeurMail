@@ -22,7 +22,7 @@ echo "[END] Configuring Postfix..."
 
 # ---- Test ----
 
-sleep 12 # wait for mysql & postfix server started
+sleep 14 # wait for mysql & postfix server started
 
 USER='clientuser'
 COMMAND='echo "client mail -> root "|mail -s "Bjr1" root@mymailserver'
