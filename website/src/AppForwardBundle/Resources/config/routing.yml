@@ -1,0 +1,3 @@
+app_forward_homepage:
+    path:     /
+    defaults: { _controller: AppForwardBundle:Default:index }
