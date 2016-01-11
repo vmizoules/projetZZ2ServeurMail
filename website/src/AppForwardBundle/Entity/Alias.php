@@ -45,7 +45,7 @@ class Alias
     private $modified;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default" = 1}))
      **/
     private $enabled = 1; // activated by default
 
