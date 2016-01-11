@@ -6,3 +6,23 @@ app_forward_homepage:
 app_forward_alias_add:
     path:     /alias/add
     defaults: { _controller: AppForwardBundle:Alias:add }
+
+app_forward_alias_update:
+    path:     /alias/update/{id}
+    defaults: { _controller: AppForwardBundle:Alias:update }
+
+app_forward_alias_delete:
+    path:     /alias/delete/{id}
+    defaults: { _controller: AppForwardBundle:Alias:delete }
+
+app_forward_alias_disable:
+    path:     /alias/disable/{id}
+    defaults: { _controller: AppForwardBundle:Alias:disable }
+
+app_forward_alias_enable:
+    path:     /alias/enable/{id}
+    defaults: { _controller: AppForwardBundle:Alias:enable }
+
+app_forward_alias_list:
+    path:     /alias/list
+    defaults: { _controller: AppForwardBundle:Alias:list }
