@@ -1,0 +1,17 @@
+/*==========================================================================
+=            
+
+Color Name - Yellow;
+Color Code - #e4d20c
+
+            =
+==========================================================================*/
+
+.section-heading h4,.left-about-heading  h4,.quote-icon, .single-faq h5, .colored-color, .feature-icon {
+	color: #e4d20c;
+}
+
+.standard-button, .about-list-icon, .section-bg-color-second, .border-from-bottom::before, .boder-from-left::before {
+  background-color: #e4d20c;
+}
+
