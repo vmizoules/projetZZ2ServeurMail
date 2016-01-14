@@ -1,0 +1,17 @@
+/*==========================================================================
+=            
+
+Color Name - Slate;
+Color Code - #6b798f
+
+            =
+==========================================================================*/
+
+.section-heading h4,.left-about-heading  h4,.quote-icon, .single-faq h5, .colored-color, .feature-icon {
+	color: #6b798f;
+}
+
+.standard-button, .about-list-icon, .section-bg-color-second, .border-from-bottom::before, .boder-from-left::before {
+  background-color: #6b798f;
+}
+

@@ -1,6 +1,6 @@
 app_forward_homepage:
     path:     /
-    defaults: { _controller: AppForwardBundle:Default:index }
+    defaults: { _controller: AppForwardBundle:Default:homepage }
 
 
 app_forward_alias_add:

@@ -1,0 +1,17 @@
+/*==========================================================================
+=            
+
+Color Name - Orange;
+Color Code - #ea8825
+
+            =
+==========================================================================*/
+
+.section-heading h4,.left-about-heading  h4,.quote-icon, .single-faq h5, .colored-color, .feature-icon {
+	color: #ea8825;
+}
+
+.standard-button, .about-list-icon, .section-bg-color-second, .border-from-bottom::before, .boder-from-left::before {
+  background-color: #ea8825;
+}
+
