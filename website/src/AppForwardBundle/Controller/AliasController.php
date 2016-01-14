@@ -15,15 +15,20 @@ class AliasController extends Controller
 {
     public function listAction()
     {
+        // get repo
         $aliasRepository = $this->getAliasRepository();
 
-        $alias = $aliasRepository->findBy(
+        // get aliasess
+        $aliases = $aliasRepository->findBy(
             array("user_id" => $this->getUserId())
         );
 
-        echo "<pre>";
-        var_dump($alias);
-        exit("");
+        // display it
+        return $this->render('AppForwardBundle:Pages:alias_list.html.twig',
+            array(
+                'aliases' => $aliases,
+            )
+        );
     }
 
     public function addAction(Request $request)
@@ -49,17 +54,13 @@ class AliasController extends Controller
             $newAlias->setCreated($now);
             $newAlias->setModified($now);
 
-            /*$database = new Mysql($this->getDoctrine());
-            $database->createAlias($newAlias);*/
-
+            // create in db
             $entityManager = $this->getEntityManager();
             $entityManager->persist($newAlias);
             $entityManager->flush();
 
-            // todo : clean it !
-            exit("TODO: save it !");
-
-            //return $this->redirectToRoute('replace_with_some_route');
+            // return to alias list
+            return $this->redirectToRoute('app_forward_alias_list');
         }
 
         return $this->render(
@@ -91,9 +92,8 @@ class AliasController extends Controller
             // flush db
             $this->getEntityManager()->flush();
 
-            // todo : clean it !
-            exit("good");
-            //return $this->redirectToRoute('replace_with_some_route');*/
+            // return to alias list
+            return $this->redirectToRoute('app_forward_alias_list');
         }
 
         return $this->render(
@@ -116,18 +116,18 @@ class AliasController extends Controller
         $em->remove($alias);
         $em->flush();
 
-        // TODO make it better
-        exit("good");
+        // return to alias list
+        return $this->redirectToRoute('app_forward_alias_list');
     }
 
     public function enableAction($id)
     {
-        $this->changeAliasStatus($id, 1);
+        return $this->changeAliasStatus($id, 1);
     }
 
     public function disableAction($id)
     {
-        $this->changeAliasStatus($id, 0);
+        return $this->changeAliasStatus($id, 0);
     }
 
 
@@ -177,10 +177,13 @@ class AliasController extends Controller
 
         // disable or enable alias
         $alias->setEnabled($enabled_value);
+        // set modified at now
+        $now = new DateTime('now');
+        $alias->setModified($now);
         // save
         $this->getEntityManager()->flush();
 
-        // todo redirect after this !
-        exit("good");
+        // return to alias list
+        return $this->redirectToRoute('app_forward_alias_list');
     }
 }

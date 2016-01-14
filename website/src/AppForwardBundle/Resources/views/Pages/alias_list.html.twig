@@ -1,0 +1,7 @@
+List :
+
+{% for alias in aliases %}
+
+    {% include 'AppForwardBundle:Components:alias.html.twig' with {'alias': alias} %}
+
+{% endfor %}
