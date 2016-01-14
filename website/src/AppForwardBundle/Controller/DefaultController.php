@@ -10,9 +10,5 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    public function homepageAction()
-    {
-        // helloworld
-        return $this->render('AppForwardBundle:Default:homepage.html.twig');
-    }
+
 }
