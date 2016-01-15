@@ -30,7 +30,7 @@ client1:
     volumes:
         - ./postfix_client/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
     links:
-        - postfix:mymailserver
+        - postfix:zz2postfixproject.fr
 
 webserver:
     build: apache

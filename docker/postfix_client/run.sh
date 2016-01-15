@@ -25,15 +25,15 @@ echo "[END] Configuring Postfix..."
 sleep 14 # wait for mysql & postfix server started
 
 USER='clientuser'
-COMMAND='echo "client mail -> root "|mail -s "Bjr1" root@mymailserver'
+COMMAND='echo "client mail -> root "|mail -s "Bjr1" root@zz2postfixproject.fr'
 launch "$USER" "$COMMAND"
 
 USER='clientuser'
-COMMAND='echo "client mail -> Vincent "|mail -s "Bjr2" vincent@mymailserver'
+COMMAND='echo "client mail -> Vincent "|mail -s "Bjr2" vincent@zz2postfixproject.fr'
 launch "$USER" "$COMMAND"
 
 USER='clientuser'
-COMMAND='echo "client mail -> noe -> Vincent "|mail -s "Bjr3" noe@mymailserver'
+COMMAND='echo "client mail -> noe -> Vincent "|mail -s "Bjr3" noe@zz2postfixproject.fr'
 launch "$USER" "$COMMAND"
 
 #tail -f /opt/run.sh
