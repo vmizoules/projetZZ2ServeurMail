@@ -4,7 +4,6 @@ namespace AppForwardBundle\Controller;
 
 use AppForwardBundle\Entity\Alias;
 use AppForwardBundle\Form\AliasType;
-use AppForwardBundle\Repository\Mysql;
 use AppForwardBundle\Manager\MailAddress;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
