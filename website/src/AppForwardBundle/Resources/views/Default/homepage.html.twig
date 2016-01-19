@@ -26,7 +26,11 @@
 	 				</span> </H1>
                     <H4>Le meilleur site de transfère de mail au monde </H4>
                 </div> <!-- HEADER-TEXT -->
-                <div class="subscribtion-form">
+
+                {# user not connected #}
+                {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <div class="subscribtion-form"> <!-- SUBSCRIBTION FORM  -->
+
                     <div class="subcribtion-inputs">
 	 						<span class="input input--madoka">
 							<input class="input__field input__field--madoka" type="text" id="input-1" />
@@ -38,6 +42,7 @@
                             </label>
 							</span>
                     </div> <!-- SUBSCRIBTION INPUTS -->
+
                     <div class="subscribtion-button">
                         <a href="#" class="btn-lg standard-button">Register</a>
                     </div>
@@ -45,7 +50,8 @@
                         <a href="#" class="btn-lg standard-button">Login</a>
                     </div>
 
-                </div> <!-- SUBSCRIBTION FORM  -->
+                </div> <!-- /SUBSCRIBTION FORM  -->
+                {% endif %}
 
             </div>
         </div>

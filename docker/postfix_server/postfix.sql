@@ -36,7 +36,7 @@ VALUES (
 	1,
 	'noe',
 	'noe',
-	'vincent@localhost',
+	'vincent.mizoules@poste.isima.fr',
 	'vincent@localhost',
 	1,
 	'2vjjpacc0jac8owo0k0owg00o0cskgo',
@@ -53,5 +53,5 @@ VALUES (
 );
 
 /* Create alias for user noe (id=1) with alias address noe@mymailserver */
-INSERT INTO alias (address,user_id) VALUES ('noe@mymailserver', 1);
+INSERT INTO alias (address,user_id) VALUES ('noe@zz2postfixproject.fr', 1);
 
