@@ -35,3 +35,8 @@ app_forward_alias_enable:
 app_forward_alias_list:
     path:     /alias/list
     defaults: { _controller: AppForwardBundle:Alias:list }
+
+# /api
+app_forward_api_create:
+    path:     /api/create
+    defaults: { _controller: AppForwardBundle:Default:create }
