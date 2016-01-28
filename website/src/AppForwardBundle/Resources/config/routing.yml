@@ -3,7 +3,7 @@ app_forward_homepage:
     path:     /
     defaults: #direct render homepage template
         _controller: FrameworkBundle:Template:template
-        template:    AppForwardBundle:Default:homepage.html.twig
+        template:    AppForwardBundle:Pages:homepage.html.twig
 
 app_forward_login:
     path:     /login
