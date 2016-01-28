@@ -1,0 +1,39 @@
+javascript:
+//instancier objet xhr
+var xhr = new XMLHttpRequest();
+
+//definit comment on va envoyer open(Methode de transfere, Url de notre site qui prendra en compte la requete, bAsync (true -> asynchrone))
+xhr.open('POST', 'http://localhost/web/app_dev.php/api/create', true);
+
+// setRequestHeader : ajout d'un entete manuel
+// absolument le faire lorsqu'on utilise methode post pour changer le type du mime sinon serveur l'ignore
+xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+//onreadystatechange : detecter le changement d'état
+xhr.onreadystatechange = function() {
+//readyState : regarder l'état de la requête
+if(this.readyState == 4) {
+//document.activeElement : renvoi element sur lequel on est focus
+var i=document.activeElement;
+//si c'est un type INPUT ou type TEXTAREA
+if(i.tagName=='INPUT' || i.tagName=='TEXTAREA') {
+//i prend la valeur de la réponse de notre serveur (@Mail)
+i.value = this.responseText;
+} else if(i.tagName=='IFRAME') {//sinon si c'est un contexte de navigation imbriqueé alors
+// encodeURIComponent :  conserver les caractères spéciaux et espace
+//on associe location à la valeur suivante
+//window.location.href : retourne l'URL du site ou l'on est
+location='http://closetoshop.com/app/landingBookmarklet?email='+encodeURIComponent(this.responseText)+'&url='+encodeURIComponent(window.location.href);
+} else { //sinon on est pas sur le champ email
+alert('Merci de sélectionner la champ correspondant à l\'email');
+}
+}
+};
+// window.location.host : retourne le nom de domaine du site ou l'on est (ex : www.leboncoin.fr)
+// si on est pas sur notre site de mail et qu'on accepte de creer une adresse Mail
+if(window.location.host != 'Myprojectmail' && confirm('Souhaitez-vous créer une adresse mymailserver pour '+window.location.host+' ?')) {
+// alors on envoit la requete avec une url avec le nom du site sur lequel on est et l'identifiant de l'utilisateur (à securiser en regardant coté session php)
+xhr.send('site='+encodeURIComponent(window.location.host)+'&url='+encodeURIComponent(window.location));
+}
+void(0);
+
