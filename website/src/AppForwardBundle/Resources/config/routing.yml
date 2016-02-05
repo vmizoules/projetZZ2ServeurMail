@@ -11,6 +11,13 @@ app_forward_login:
       _controller: FrameworkBundle:Template:template
       template:    AppForwardBundle:Pages:login.html.twig
 
+app_forward_bookmark:
+    path:     /bookmark
+    defaults: #direct render login template
+      _controller: FrameworkBundle:Template:template
+      template:    AppForwardBundle:Components:javascript-bookmark.js.twig
+
+
 # /alias
 app_forward_alias_add:
     path:     /alias/add
