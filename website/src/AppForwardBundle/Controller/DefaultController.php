@@ -17,6 +17,7 @@ class DefaultController extends Controller
 
         // test it with : curl --data "site=mysite&url=mysite.abc/as.php" http://127.0.0.1/web/app_dev.php/api/create
 
+        $httpCodeStatus = 401; // status: user not authenticated
         $data = array(
             'authenticated' => false,
             'created'       => false,
@@ -56,13 +57,13 @@ class DefaultController extends Controller
                 // set response
                 $data['address'] = $newAlias->getAddress();
                 $data['created'] = true;
+                $httpCodeStatus = 200; // status: good
             } catch (Exception $e) {
-                // do nothing
-                // it will answer an error
+                $httpCodeStatus = 503; // status: service unavailable or under maintenance
             }
         }
 
-        return new JsonResponse($data);
+        return new JsonResponse($data, $httpCodeStatus);
     }
 
     private function getUserId()
