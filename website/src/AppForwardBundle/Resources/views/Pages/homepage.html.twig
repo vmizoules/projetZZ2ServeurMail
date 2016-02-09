@@ -31,7 +31,8 @@
                 {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <div class="subscribtion-form"> <!-- SUBSCRIBTION FORM  -->
 
-                    <div class="subcribtion-inputs">
+                    <form id="form-register" action="#TODO" method="post">
+                        <div class="subcribtion-inputs">
 	 						<span class="input input--madoka">
 							<input class="input__field input__field--madoka" type="text" id="input-1" />
 							<label class="input__label input__label--madoka" for="input-1">
@@ -41,14 +42,26 @@
                                 <span class="input__label-content input__label-content--madoka">Your E-mail Please...</span>
                             </label>
 							</span>
-                    </div> <!-- SUBSCRIBTION INPUTS -->
+                        </div> <!-- SUBSCRIBTION INPUTS -->
+                    </form>
 
-                    <div class="subscribtion-button">
-                        <a href="#" class="btn-lg standard-button">Register</a>
-                    </div>
-                    <div class="subscribtion-button">
-                        <a href="#" class="btn-lg standard-button">Login</a>
-                    </div>
+                    <form id="form-login" action="{{ path('app_forward_login') }}" method="post">
+                        <input style="display: none;" type="text" id="input-2" />
+                    </form>
+
+                    <div class="row"> <!-- Validations Buttons -->
+                        <div class="subscribtion-button">
+                            <a class="btn-lg standard-button" onClick="document.forms['form-register'].submit();">
+                                Register
+                            </a>
+                        </div>
+
+                        <div class="subscribtion-button">
+                            <a class="btn-lg standard-button" onClick="document.forms['form-login'].submit();">
+                                Login
+                            </a>
+                        </div>
+                    </div> <!-- /Validations Buttons -->
 
                 </div> <!-- /SUBSCRIBTION FORM  -->
                 {% endif %}
@@ -57,4 +70,12 @@
         </div>
     </section>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $("#input-1").on("keyup paste", function() {
+            $("#input-2").val($(this).val());
+        });
+    </script>
 {% endblock %}

@@ -17,7 +17,7 @@ class AliasController extends Controller
         // get repo
         $aliasRepository = $this->getAliasRepository();
 
-        // get aliasess
+        // get aliases
         $aliases = $aliasRepository->findBy(
             array("user_id" => $this->getUserId())
         );
