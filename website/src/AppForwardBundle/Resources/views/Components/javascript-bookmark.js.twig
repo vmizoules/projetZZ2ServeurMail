@@ -1,3 +1,6 @@
+// this script is available in minified version in file : javascript-bookmark.min.js.twig
+// Minified with : http://jscompress.com/
+
 var xhr = new XMLHttpRequest();
 // comment on va envoyer (Méthode de transfert, Url, bAsync (true -> asynchrone))
 var website = 'http://127.0.0.1';
@@ -34,7 +37,7 @@ xhr.onreadystatechange = function () {
             }
         } else {
             // user not connected
-            var ask = window.confirm('Tu n\'es pas connecté sur Forzzard. Veux-tu t\'y connecter ?');
+            var ask = window.confirm('Tu es pas connecté sur Forzzard. Veux-tu te connecter ?');
             if (ask) {
                 // confirm -> redirect
                 var win = window.open(website + '/web/app_dev.php/login', '_blank');
@@ -51,5 +54,3 @@ if (window.location.host != 'Myprojectmail' && confirm('Souhaitez-vous créer un
     xhr.send('site=' + encodeURIComponent(window.location.host) + '&url=' + encodeURIComponent(window.location));
 }
 void(0);
-
-<a href="javascript:alert('abc');"> Bookmark </a>

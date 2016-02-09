@@ -1,8 +1,15 @@
 {% extends 'AppForwardBundle::layout.html.twig' %}
 
 {% block content %}
-    Ajouter :
+    <p>
+        Ajouter :
 
-    {% include 'AppForwardBundle:Form:alias.html.twig' %}
+        {% include 'AppForwardBundle:Form:alias.html.twig' %}
+    </p>
+
+    <p>
+        Utilise notre bookmark pour ajouter rapidement un alias :
+        <a href='javascript:{% include 'AppForwardBundle:Components:javascript-bookmark-min.js.twig' %}'>Bookmark</a>
+    </p>
 
 {% endblock %}
