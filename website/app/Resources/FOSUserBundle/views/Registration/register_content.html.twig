@@ -1,5 +1,9 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+{{ form_errors(form.username) }}
+{{ form_errors(form.email) }}
+{{ form_errors(form.plainPassword.first) }}
+
 <form role="form" action="{{ path('fos_user_registration_register') }}" method="POST" class="login-form" >
     <div class="form-group">
         <label for="fos_user_registration_form_email" class="sr-only">Email :</label>

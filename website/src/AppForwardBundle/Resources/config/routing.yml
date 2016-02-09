@@ -5,18 +5,6 @@ app_forward_homepage:
         _controller: FrameworkBundle:Template:template
         template:    AppForwardBundle:Pages:homepage.html.twig
 
-app_forward_login:
-    path:     /login
-    defaults: #direct render login template
-      _controller: FrameworkBundle:Template:template
-      template:    AppForwardBundle:Pages:login.html.twig
-
-app_forward_register:
-    path:     /register/
-    defaults: #direct render login template
-      _controller: FrameworkBundle:Template:template
-      template:    AppForwardBundle:Pages:register.html.twig
-
 # /alias
 app_forward_alias_add:
     path:     /alias/add

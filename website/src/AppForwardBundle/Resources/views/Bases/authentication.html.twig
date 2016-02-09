@@ -27,7 +27,7 @@
                 <div class="container">
 
                     {# user is connected by his cookie #}
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.request.get('_route') != 'fos_user_registration_confirmed' %}
                         Tu es connecté !
                     {% else %}
                         {% block form %}

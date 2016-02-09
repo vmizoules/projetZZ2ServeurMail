@@ -1,5 +1,22 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-    {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 form-box">
+            <div class="form-top">
+                <div class="form-top-left">
+                    <h3>Register to our site</h3>
+                    <p>Enter your username and password and address mail to register :</p>
+                </div>
+                <div class="form-top-right">
+                    <i class="fa fa-key"></i>
+                </div>
+            </div>
+            <div class="form-bottom">
+                {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+            </div>
+        </div>
+    </div>
+
 {% endblock fos_user_content %}
