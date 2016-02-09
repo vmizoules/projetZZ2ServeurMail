@@ -11,6 +11,12 @@ app_forward_login:
       _controller: FrameworkBundle:Template:template
       template:    AppForwardBundle:Pages:login.html.twig
 
+app_forward_register:
+    path:     /register/
+    defaults: #direct render login template
+      _controller: FrameworkBundle:Template:template
+      template:    AppForwardBundle:Pages:register.html.twig
+
 # /alias
 app_forward_alias_add:
     path:     /alias/add
