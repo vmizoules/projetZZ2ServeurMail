@@ -1,9 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-
 if($_POST['email']) {
 	
 	$to = $_POST['email'];
@@ -23,7 +19,7 @@ if($_POST['email']) {
 	$message .= '</body></html>';
 
 	mail($to, $subject, $message, $headers);
-die();
+
 	header("Location: confirmation.html");	
 } else {
 	header("Location: index.html");
