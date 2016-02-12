@@ -1,13 +1,12 @@
 <?php
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+
 if($_POST['email']) {
-
-
+	
 	$to = $_POST['email'];
-	echo $to;
-
-
-	die();
 
 	$from = "abcde@poste.isima.fr";
 
@@ -24,8 +23,8 @@ if($_POST['email']) {
 	$message .= '</body></html>';
 
 	mail($to, $subject, $message, $headers);
-
-	header("Location: index.html");
-} else {
+die();
 	header("Location: confirmation.html");	
+} else {
+	header("Location: index.html");
 }

@@ -46,13 +46,16 @@ webserver:
         - database:database
 
 webserver_newsletter:
-    build: apache
+    build: apache+mail
     ports:
         - "8888:80"
     volumes:
         - ../website-newsletter:/var/www/html/
+        - ./apache+mail/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
     environment:
         - ALLOW_OVERRIDE=true
+    links:
+        - postfix:zz2postfixproject.fr
 
 phpmyadmin:
     image: corbinu/docker-phpmyadmin:4.2.7.1
