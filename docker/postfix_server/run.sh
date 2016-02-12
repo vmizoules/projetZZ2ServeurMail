@@ -40,7 +40,6 @@ echo "[END] Configuring Postfix..."
 echo "[START] Waiting for MySQL start"
 sleep 12
 echo "[END] Waiting for MySQL start"
-mysql -h database_1 -u root -prootpassword < /opt/postfix.sql
 
 # Launch services
 
@@ -71,4 +70,4 @@ USER='root'
 COMMAND='mail -p'
 launch "$USER" "$COMMAND"
 
-#tail -f /var/log/mail.log
+tail -f /var/log/mail.log

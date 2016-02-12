@@ -24,6 +24,8 @@ database:
         - MYSQL_DATABASE=postfix
         - MYSQL_USER=postfix
         - MYSQL_PASSWORD=password
+    volumes:
+        - ./database/mysql:/var/lib/mysql
 
 client1:
     build: postfix_client

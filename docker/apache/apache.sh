@@ -2,10 +2,10 @@
 
 # wait database 
 sleep 10
+
 # configure symfony
 cd /var/www/html
 php composer.phar install
-php bin/console doctrine:schema:update --force
 php bin/console assets:install web
 chmod 777 -R var/cache var/logs
 
