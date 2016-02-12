@@ -45,6 +45,15 @@ webserver:
     links:
         - database:database
 
+webserver_newsletter:
+    build: apache
+    ports:
+        - "8888:80"
+    volumes:
+        - ../website-newsletter:/var/www/html/
+    environment:
+        - ALLOW_OVERRIDE=true
+
 phpmyadmin:
     image: corbinu/docker-phpmyadmin:4.2.7.1
     ports:
