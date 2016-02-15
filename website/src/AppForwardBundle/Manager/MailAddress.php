@@ -6,7 +6,7 @@ class MailAddress
 {
     public static function generateMailAddress($username, $website) {
         $start = md5($username.$website.microtime()."caca");
-        $end = "@projetmail.zz2";
+        $end = "@zz2postfixproject.fr";
         return $start.$end;
     }
 }
