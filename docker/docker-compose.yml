@@ -37,6 +37,7 @@ webserver:
         - ../website:/var/www/html/
     environment:
         - ALLOW_OVERRIDE=true
+        - INSTALL_DEPENDENCIES=false
     links:
         - database:database
 
