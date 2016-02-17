@@ -51,6 +51,6 @@ xhr.onreadystatechange = function () {
 // si on est pas sur notre site de mail et qu'on accepte de creer une adresse Mail
 if (window.location.host != 'Myprojectmail' && confirm('Souhaitez-vous créer une adresse mymailserver pour ' + window.location.host + ' ?')) {
     // alors on envoit la requete avec une url avec le nom du site sur lequel on est et l'identifiant de l'utilisateur (à securiser en regardant coté session php)
-    xhr.send('site=' + encodeURIComponent(window.location.host) + '&url=' + encodeURIComponent(window.location));
+    xhr.send('id=555555555555555&site=' + encodeURIComponent(window.location.host) + '&url=' + encodeURIComponent(window.location));
 }
 void(0);
