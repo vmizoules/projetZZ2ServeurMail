@@ -38,6 +38,7 @@ webserver:
     environment:
         - ALLOW_OVERRIDE=true
         - INSTALL_DEPENDENCIES=false
+        - INSTALL_DATABASE=false
     links:
         - database:database
 
