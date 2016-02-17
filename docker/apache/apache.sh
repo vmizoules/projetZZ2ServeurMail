@@ -9,6 +9,10 @@ if [ $INSTALL_DEPENDENCIES = "true" ]; then
 	php composer.phar install
 	php bin/console assets:install web
 fi
+if [ $INSTALL_DATABASE = "true" ]; then
+	sleep 15
+	php bin/console doctrine:schema:update --force
+fi
 
 # -- run apache2 --
 source /etc/apache2/envvars
