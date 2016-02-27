@@ -1,0 +1,56 @@
+// this script is available in minified version in file : javascript-bookmark.min.js.twig
+// Minified with : http://jscompress.com/
+
+var xhr = new XMLHttpRequest();
+// comment on va envoyer (Méthode de transfert, Url, bAsync (true -> asynchrone))
+var website = 'http://127.0.0.1';
+xhr.open('POST', website + '/web/app_dev.php/api/create', true);
+
+// setRequestHeader : ajout d'un entete manuel
+// absolument le faire lorsqu'on utilise methode post pour changer le type du mime sinon serveur l'ignore
+xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+// detecter le changement d'état
+xhr.onreadystatechange = function () {
+    // regarder l'état de la requête
+    if (this.readyState == 4) {
+        // json to array
+        var response = JSON.parse(this.responseText);
+        // element sur lequel on est focus
+        var i = document.activeElement;
+        // user authenticated ?
+        if (response.authenticated) {
+            // email created ?
+            if (response.created) {
+                //si c'est un type INPUT ou type TEXTAREA
+                if (i.tagName == 'INPUT' || i.tagName == 'TEXTAREA') {
+                    //i prend la valeur de la réponse de notre serveur (@Mail)
+                    i.value = response.address;
+                } else if (i.tagName == 'IFRAME') {
+                    // TODO
+                } else {
+                    // Not in input field
+                    alert('Merci de sélectionner un champ correspondant à email');
+                }
+            } else {
+                alert('Email non crée... Contact nous !');
+            }
+        } else {
+            // user not connected
+            var ask = window.confirm('Tu es pas connecté sur Forzzard. Veux-tu te connecter ?');
+            if (ask) {
+                // confirm -> redirect
+                var win = window.open(website + '/web/app_dev.php/login', '_blank');
+                win.focus();
+            }
+        }
+    }
+};
+
+// window.location.host = le nom de domaine du site ou l'on est (ex : www.leboncoin.fr)
+// si on est pas sur notre site de mail et qu'on accepte de creer une adresse Mail
+if (window.location.host != 'Myprojectmail' && confirm('Souhaitez-vous créer une adresse mymailserver pour ' + window.location.host + ' ?')) {
+    // alors on envoit la requete avec une url avec le nom du site sur lequel on est et l'identifiant de l'utilisateur (à securiser en regardant coté session php)
+    xhr.send('site=' + encodeURIComponent(window.location.host) + '&url=' + encodeURIComponent(window.location));
+}
+void(0);

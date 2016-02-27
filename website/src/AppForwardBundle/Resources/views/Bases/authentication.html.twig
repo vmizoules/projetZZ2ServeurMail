@@ -1,0 +1,42 @@
+{% extends 'AppForwardBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+
+	<link rel="stylesheet" href="{{ asset('bundles/appforward/css/login/form-elements.css') }}">
+	<link rel="stylesheet" href="{{ asset('bundles/appforward/css/login/style.css') }}">
+
+{% endblock %}
+
+{% block javascripts %}
+        <script src="{{ asset('bundles/appforward/js/jquery.backstretch.min.js') }}"></script>
+		<script>
+			// give asset to following js script
+			var backstretch_image = "{{ asset('bundles/appforward/images/background/login.jpg') }}";
+		</script>
+        <script src="{{ asset('bundles/appforward/js/login_scripts.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+
+                    {# user is connected by his cookie #}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.request.get('_route') != 'fos_user_registration_confirmed' %}
+                        Tu es connecté !
+                    {% else %}
+                        {% block form %}
+                        {% endblock %}
+                    {% endif %}
+                </div>
+                <a href="{{ path('app_forward_homepage') }}">Retourner à l'accueil</a>
+            </div>
+
+        </div>
+
+{% endblock %}

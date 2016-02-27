@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Project isima zz2">
+    <meta name="keywords" content="isima,project,">
+    <meta name="author" content="Alexandre BARRET - Vincent MIZOULES">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- SITE TITLE -->
+    <title>{% block title %}Project Mail Forward {% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <!-- =========================
+         STYLESHEETS  AREA
+    ============================== -->
+
+    {% block stylesheets %}{% endblock %}
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="{{ asset('bundles/appforward/css/bootstrap.min.css') }}">
+    <!-- FONT ICON (FONT-AWESOME) -->
+    <link rel="stylesheet"  href="{{ asset('bundles/appforward/assets/font-awesome/css/font-awesome.min.css')}}">
+
+    <!-- OWL-CAROUSEL -->
+    <link rel="stylesheet"  href="{{ asset('bundles/appforward/assets/owl-carousel/owl.carousel.css')}}">
+    <link rel="stylesheet"  href="{{ asset('bundles/appforward/assets/owl-carousel/owl-carousel/owl.theme.css')}}">
+
+    <!-- WODRY TEXT SLIDING  -->
+    <link rel="stylesheet"  href="{{ asset('bundles/appforward/css/wodry.css')}}">
+
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet"  href="{{ asset('bundles/appforward/css/style.css')}}">
+
+    <!-- COLORS -->
+    <link rel="stylesheet"  href="{{ asset('bundles/appforward/css/colors/light-green.css') }}"> <!-- default color -->
+    <!-- <link rel="stylesheet"  href="css/colors/blue.css"> -->
+    <!-- <link rel="stylesheet"  href="css/colors/blue-munsell.css"> -->
+    <!-- <link rel="stylesheet"  href="css/colors/orange.css"> -->
+    <!-- <link rel="stylesheet"  href="css/colors/purple.css"> -->
+    <!-- <link rel="stylesheet"  href="css/colors/red.css"> -->
+    <!-- <link rel="stylesheet"  href="css/colors/slate.css"> -->
+    <!-- <link rel="stylesheet"  href="css/colors/yellow.css"> -->
+
+    <!-- RESPONSIVE FIXES -->
+    <link rel="stylesheet"  href="{{ asset('bundles/appforward/css/responsive.css')}}">
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/appforward/js/html5shiv.js')}}"></script>
+    <script src="{{ asset('bundles/appforward/js/respond.min.js')}}"></script>
+    <![endif]-->
+</head>
+
+<body>
+<!-- =========================
+     PRE-LOADER  AREA
+============================== -->
+<div class="preloader">
+    <div class="status">&nbsp;</div>
+</div>
+
+{# user is connected by his cookie #}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('app_forward_homepage') }}">Accueil</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('app_forward_alias_list') }}">Lister</a></li>
+                    <li class="active"><a href="{{ path('app_forward_alias_add') }}"> Ajouter une adresse mail <span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Paramètres</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}">Log out </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+{% endif %}
+
+
+{% block content %}
+{% endblock %}
+
+
+<!-- =========================
+   FOOTER  AREA
+============================== -->
+<footer id="section-9" class="section-bg-color">
+    <div class="container">
+        <div class="footer-logo hover-grow-shadow">
+            <img src="{{ asset('bundles/appforward/images/logo-dark.png')}}" alt="Logo">
+        </div> <!-- FOOTER LOGO -->
+
+        <div class="copyright-text">
+            <p>&copy;2016 Alexandre BARRET & Vincent MIZOULES</p>
+        </div> <!-- COPYRIGHT TEXT -->
+
+    </div> <!-- CONTAINER CLOSE HERE -->
+</footer>
+<!-- =========================
+     SCRIPTS   AREA
+============================== -->
+<!-- JQUERY LATEST -->
+<script src="{{ asset('bundles/appforward/js/jquery-1.11.2.min.js')}}"></script> <!-- You can use CDN version -->
+
+<script>
+    /* =================================
+     PRE-LOADER ACTIVE SCRIPT
+     =================================== */
+    // makes sure the whole site is loaded
+    jQuery(window).load(function() {
+        "use strict";
+        // will first fade out the loading animation
+        jQuery(".status").fadeOut();
+        // will fade out the whole DIV that covers the website.
+        jQuery(".preloader").delay(1000).fadeOut("slow");
+    })
+
+</script>
+
+<!-- BOOTSTRAP SCRIPT -->
+<script src="{{ asset('bundles/appforward/js/bootstrap.min.js')}}"></script>
+
+<!-- WODRY TEXT SLIDING EFFECT -->
+<script src="{{ asset('bundles/appforward/js/wodry.min.js')}}"></script>
+
+<!-- SMOOTH SCROLLING FOR EVERY BROWSER -->
+<script src="{{ asset('bundles/appforward/js/SmoothScroll.js')}}"></script>
+
+<!-- RETINA READY FOR DEVICES -->
+<script src="{{ asset('bundles/appforward/js/retina.min.js')}}"></script>
+
+<!-- RESPONSIVE VIDEO -->
+<script src="{{ asset('bundles/appforward/js/jquery.fitvids.js')}}"></script>
+
+<!-- OWL-CAROUSEL -->
+<script src="{{ asset('bundles/appforward/assets/owl-carousel/owl.carousel.min.js')}}"></script>
+
+<!-- ALL CUSTOM INI AND MODIFATION -->
+<script src="{{ asset('bundles/appforward/js/custom.js')}}"></script>
+
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

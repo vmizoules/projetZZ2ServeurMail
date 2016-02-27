@@ -1,0 +1,15 @@
+FROM ubuntu:trusty
+MAINTAINER Vincent Mizoules, Alexandre Barret
+
+# Update
+RUN apt-get update
+
+# Install
+RUN apt-get -y install mailutils ssmtp
+
+# Add files
+ADD run.sh /opt/run.sh
+RUN chmod +x /opt/run.sh
+
+# Run CMD
+CMD /opt/run.sh

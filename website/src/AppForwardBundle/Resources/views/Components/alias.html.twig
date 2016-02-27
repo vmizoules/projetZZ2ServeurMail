@@ -1,0 +1,16 @@
+
+<p>
+    Alias - {{ alias.address }}<br/>
+    {{ alias.url }}<br/>
+    Created : {{ alias.createdString }} - Modified : {{ alias.modifiedString }}<br/>
+
+    {% if alias.enabled %}
+        Activer - <a href="{{ path('app_forward_alias_disable', {'id': alias.address}) }}">Désactiver</a>
+    {% else %}
+        <a href="{{ path('app_forward_alias_enable', {'id': alias.address}) }}"> Activer </a> - Désactiver
+    {% endif %}
+
+    <br/>
+    <a href="{{ path('app_forward_alias_delete', {'id': alias.address}) }}"> delete </a>
+    <br/><br/>
+</p>

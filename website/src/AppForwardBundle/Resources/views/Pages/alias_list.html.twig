@@ -1,0 +1,12 @@
+{% extends 'AppForwardBundle::layout.html.twig' %}
+
+{% block content %}
+List :
+
+{% for alias in aliases %}
+
+    {% include 'AppForwardBundle:Components:alias.html.twig' with {'alias': alias} %}
+
+{% endfor %}
+
+{% endblock %}

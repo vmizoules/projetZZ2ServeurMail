@@ -1,0 +1,36 @@
+# /
+app_forward_homepage:
+    path:     /
+    defaults: #direct render homepage template
+        _controller: FrameworkBundle:Template:template
+        template:    AppForwardBundle:Pages:homepage.html.twig
+
+# /alias
+app_forward_alias_add:
+    path:     /alias/add
+    defaults: { _controller: AppForwardBundle:Alias:add }
+
+app_forward_alias_update:
+    path:     /alias/update/{id}
+    defaults: { _controller: AppForwardBundle:Alias:update }
+
+app_forward_alias_delete:
+    path:     /alias/delete/{id}
+    defaults: { _controller: AppForwardBundle:Alias:delete }
+
+app_forward_alias_disable:
+    path:     /alias/disable/{id}
+    defaults: { _controller: AppForwardBundle:Alias:disable }
+
+app_forward_alias_enable:
+    path:     /alias/enable/{id}
+    defaults: { _controller: AppForwardBundle:Alias:enable }
+
+app_forward_alias_list:
+    path:     /alias/list
+    defaults: { _controller: AppForwardBundle:Alias:list }
+
+# /api
+app_forward_api_create:
+    path:     /api/create
+    defaults: { _controller: AppForwardBundle:Default:create }

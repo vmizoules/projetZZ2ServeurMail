@@ -1,0 +1,6 @@
+# ====== NOT USED ======== #
+
+# local alias (between a name and a local users)
+# (See man 5 aliases for format)
+
+postmaster:    root
