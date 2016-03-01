@@ -5,13 +5,6 @@ postfix:
     hostname: localhost
     ports:
         - "25:25"
-    volumes:
-        - ./postfix_server/etc/postfix/aliases:/etc/postfix/aliases
-        - ./postfix_server/etc/postfix/main.cf:/etc/postfix/main.cf
-        - ./postfix_server/etc/postfix/master.cf:/etc/postfix/master.cf
-        - ./postfix_server/etc/postfix/generic:/etc/postfix/generic
-        - ./postfix_server/etc/postfix/virtual:/etc/postfix/virtual
-        - ./postfix_server/etc/postfix/mysql_virtual_alias_maps.cf:/etc/postfix/mysql_virtual_alias_maps.cf
     links:
         - database:database
 
