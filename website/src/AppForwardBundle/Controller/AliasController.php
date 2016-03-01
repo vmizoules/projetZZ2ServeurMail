@@ -36,12 +36,15 @@ class AliasController extends Controller
         $newAlias = new Alias();
         $form = $this->createForm(AliasType::class, $newAlias);
 
+        // get user_id
+        $userId = $this->getUserId();
+
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
             // set user id in newAlias
-            $userId = $this->getUserId();
+
             $newAlias->setUserId($userId);
 
             // set random Address in newAlias
@@ -64,7 +67,10 @@ class AliasController extends Controller
 
         return $this->render(
             'AppForwardBundle:Pages:alias_add.html.twig',
-            array('form' => $form->createView())
+            array(
+                'form' => $form->createView(),
+                'user_id' => $userId,
+            )
         );
     }
 

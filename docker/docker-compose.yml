@@ -5,13 +5,6 @@ postfix:
     hostname: localhost
     ports:
         - "25:25"
-    volumes:
-        - ./postfix_server/etc/postfix/aliases:/etc/postfix/aliases
-        - ./postfix_server/etc/postfix/main.cf:/etc/postfix/main.cf
-        - ./postfix_server/etc/postfix/master.cf:/etc/postfix/master.cf
-        - ./postfix_server/etc/postfix/generic:/etc/postfix/generic
-        - ./postfix_server/etc/postfix/virtual:/etc/postfix/virtual
-        - ./postfix_server/etc/postfix/mysql_virtual_alias_maps.cf:/etc/postfix/mysql_virtual_alias_maps.cf
     links:
         - database:database
 
@@ -24,13 +17,8 @@ database:
         - MYSQL_DATABASE=postfix
         - MYSQL_USER=postfix
         - MYSQL_PASSWORD=password
-
-client1:
-    build: postfix_client
     volumes:
-        - ./postfix_client/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
-    links:
-        - postfix:zz2postfixproject.fr
+        - ./database/mysql:/var/lib/mysql
 
 webserver:
     build: apache
@@ -42,8 +30,22 @@ webserver:
         - ../website:/var/www/html/
     environment:
         - ALLOW_OVERRIDE=true
+        - INSTALL_DEPENDENCIES=false
+        - INSTALL_DATABASE=false
     links:
         - database:database
+
+webserver_newsletter:
+    build: apache+mail
+    ports:
+        - "8888:80"
+    volumes:
+        - ../website-newsletter:/var/www/html/
+        - ./apache+mail/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+    environment:
+        - ALLOW_OVERRIDE=true
+    links:
+        - postfix:zz2postfixproject.fr
 
 phpmyadmin:
     image: corbinu/docker-phpmyadmin:4.2.7.1
