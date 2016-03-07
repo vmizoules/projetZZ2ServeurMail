@@ -1,16 +1,53 @@
 
-<p>
-    Alias - {{ alias.address }}<br/>
-    {{ alias.url }}<br/>
-    Created : {{ alias.createdString }} - Modified : {{ alias.modifiedString }}<br/>
+<div class="row center-block center-block">
 
-    {% if alias.enabled %}
-        Activer - <a href="{{ path('app_forward_alias_disable', {'id': alias.address}) }}">Désactiver</a>
-    {% else %}
-        <a href="{{ path('app_forward_alias_enable', {'id': alias.address}) }}"> Activer </a> - Désactiver
-    {% endif %}
+    <div class="col-md-offset-4 col-md-4 col-sm-10">
+        <table class="table">
+            <tr class="active">
+                <td>Email</td>
+                <td>{{ alias.address }}</td>
+            </tr>
+            <tr>
+                <td>Site</td>
+                <td>{{ alias.site }}</td>
+            </tr>
+            <tr>
+                <td>Url</td>
+                <td>{{ alias.url }}</td>
+            </tr>
+            <tr>
+                <td>Création</td>
+                <td>{{ alias.createdString }}</td>
+            </tr>
+            <tr>
+                <td>Modification</td>
+                <td>{{ alias.modifiedString }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
-    <br/>
-    <a href="{{ path('app_forward_alias_delete', {'id': alias.address}) }}"> delete </a>
-    <br/><br/>
-</p>
+<div class="row">
+    <div class="col-md-offset-4 col-md-4 col-sm-10 text-center">
+
+        <i class="fa fa-pencil"></i>
+        <a href="{{ path('app_forward_alias_update', {'id': alias.address}) }}">
+            Editer
+        </a>
+
+        {% if alias.enabled %}
+            <i class="fa fa-check"></i> <a href="{{ path('app_forward_alias_disable', {'id': alias.address}) }}">Désactiver</a>
+        {% else %}
+            <i class="fa fa-times"></i> <a href="{{ path('app_forward_alias_enable', {'id': alias.address}) }}">Activer</a>
+        {% endif %}
+
+        <i class="fa fa-trash-o"></i>
+        <a href="{{ path('app_forward_alias_delete', {'id': alias.address}) }}">
+            Supprimer
+        </a>
+    </div>
+</div>
+
+<div>
+    <hr/>
+</div>

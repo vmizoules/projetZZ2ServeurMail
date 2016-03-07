@@ -102,7 +102,7 @@ class AliasController extends Controller
         }
 
         return $this->render(
-            'AppForwardBundle:Form:alias.html.twig',
+            'AppForwardBundle:Pages:alias_edit.html.twig',
             array('form' => $form->createView())
         );
     }
