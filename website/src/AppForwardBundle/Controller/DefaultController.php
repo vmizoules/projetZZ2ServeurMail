@@ -16,7 +16,7 @@ class DefaultController extends Controller
 {
     public function createAction(Request $request){
 
-        // test it with : curl --data "site=mysite&url=mysite.abc/as.php" http://127.0.0.1/web/app_dev.php/api/create
+        // test it with : curl --data "id=1&site=mysite&url=mysite.abc/as.php" http://127.0.0.1/web/app_dev.php/api/create
 
         $httpCodeStatus = 401; // status: user not authenticated (the id is not recognized)
         $data = array(
